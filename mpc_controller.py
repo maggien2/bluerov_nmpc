@@ -194,7 +194,6 @@ class NMPCNode(Node):
 
 
         Q = ca.diag(ca.DM([2, 2, 5, 1, 1, 2]))
-        # R = 0.1 * ca.DM.eye(6)
         R = ca.diag(ca.DM([0.02, 0.02, 0.02, 1, 1, 0.1]))
 
         x_err = model.x['eta'] - eta_ref
@@ -204,23 +203,9 @@ class NMPCNode(Node):
         mpc.set_objective(mterm=mterm, lterm=lterm)
         mpc.set_rterm(tau=0.01)
 
-        tau_lower = np.array([
-            -10,   # Fx
-            -10,   # Fy
-            -10,   # Fz
-            -1,    # Mx
-            -1,    # My
-            -1     # Mz
-        ]).reshape(6,1)
+        tau_lower = np.array([-10, -10, -10, -1, -1, -1]).reshape(6,1)
 
-        tau_upper = np.array([
-            10,
-            10,
-            10,
-            1,
-            1,
-            1
-        ]).reshape(6,1)
+        tau_upper = np.array([10, 10, 10, 1, 1, 1]).reshape(6,1)
 
         mpc.bounds['lower','_u','tau'] = tau_lower
         mpc.bounds['upper','_u','tau'] = tau_upper
@@ -296,7 +281,7 @@ class NMPCNode(Node):
             return
         
         if not hasattr(self, "vehicle_initialized"):
-            self.set_mode('STABILIZE')   # or 'STABILIZE'
+            self.set_mode('STABILIZE')   # or 'MANUAL'
             self.arm_vehicle()
             self.vehicle_initialized = True
             self.get_logger().info("Vehicle initialized (mode + arm)")
@@ -330,7 +315,6 @@ class NMPCNode(Node):
         print(self.force_to_pwm(tau[0]) - 1500,
               self.force_to_pwm(tau[1]) - 1500,
               self.force_to_pwm(tau[2]) - 1500,
-            #   self.force_to_pwm(tau[3]) - 1500,
               self.force_to_pwm(tau[4]) - 1500,
               self.force_to_pwm(tau[5]) - 1500,)
         
