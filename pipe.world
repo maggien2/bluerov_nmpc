@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="sand">
+
+    <!-- Base Gazebo plugins -->
+    <plugin
+        filename="gz-sim-physics-system"
+        name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin
+        filename="gz-sim-user-commands-system"
+        name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin
+        filename="gz-sim-scene-broadcaster-system"
+        name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin
+        filename="gz-sim-sensors-system"
+        name="gz::sim::systems::Sensors">
+<!--      <render_engine>ogre</render_engine>-->
+    </plugin>
+
+    <!-- IMU plugin manages all IMU sensors -->
+    <plugin
+        filename="libgz-sim-imu-system.so"
+        name="gz::sim::systems::Imu">
+    </plugin>
+
+    <!-- Buoyancy plugin manages buoyancy for all models -->
+    <plugin
+        filename="gz-sim-buoyancy-system"
+        name="gz::sim::systems::Buoyancy">
+      <!-- Fluid density is 1 (air) above 0 and 1000 (water) below 0 -->
+      <graded_buoyancy>
+        <default_density>1000</default_density>
+        <density_change>
+          <above_depth>0</above_depth>
+          <density>1</density>
+        </density_change>
+      </graded_buoyancy>
+      <!-- Enable by model name -->
+      <enable>orca4</enable>
+    </plugin>
+
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun</uri>
+    </include>
+
+    <include>
+     <uri>model://sand_heightmap</uri>
+     <pose>0 7 -10 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://orca4</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+     <uri>model://axes</uri>
+     <pose>0 0 0.2 3.14159265 0 0</pose>
+    </include>
+
+<model name="water">
+  <static>true</static>
+  <link name="water_link">
+    <pose>0 0 -2 0 0 0</pose> <!-- center of water volume -->
+    <visual name="water_visual">
+      <geometry>
+        <box>
+          <size>100 100 4</size>
+        </box>
+      </geometry>
+      <material>
+        <ambient>0 0.2 0.5 0.3</ambient> 
+        <diffuse>0 0.2 0.5 0.3</diffuse>
+        <specular>0 0.2 0.5 0.1</specular>
+      </material>
+    </visual>
+  </link>
+
+</model>
+
+<model name="pipe">
+  <static>true</static>
+  <pose>0 -2 -9.9 0 0 0</pose>
+
+  <!-- First half of pipe -->
+  <link name="pipe_part1">
+    <pose>-5.5 0 0 0 1.5708 0</pose>
+
+    <collision name="collision1">
+      <geometry>
+        <cylinder>
+          <radius>0.1</radius>
+          <length>11.0</length>
+        </cylinder>
+      </geometry>
+    </collision>
+
+    <visual name="visual1">
+      <geometry>
+        <cylinder>
+          <radius>0.1</radius>
+          <length>11.0</length>
+        </cylinder>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- Second half rotated 45 degrees -->
+  <link name="pipe_part2">
+    <pose> 3.889 3.889 0 0 1.5708 0.7854</pose>
+
+    <collision name="collision2">
+      <geometry>
+        <cylinder>
+          <radius>0.1</radius>
+          <length>11.0</length>
+        </cylinder>
+      </geometry>
+    </collision>
+
+    <visual name="visual2">
+      <geometry>
+        <cylinder>
+          <radius>0.1</radius>
+          <length>11.0</length>
+        </cylinder>
+      </geometry>
+    </visual>
+  </link>
+
+</model>
+
+  </world>
+</sdf>
