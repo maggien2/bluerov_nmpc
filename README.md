@@ -50,3 +50,8 @@ Uses Orca4 (https://github.com/clydemcqueen/orca4?tab=readme-ov-file) Dockerfile
   ros2 run orca_control mpc_controller.py
   ```
   
+## Publish waypoint example
+  ```
+  ros2 topic pub /mpc/eta_ref std_msgs/msg/Float64MultiArray \
+  "{data: [4.0, 4.0, -4.0, 0.0, 0.0, 0.0]}"
+  ```
