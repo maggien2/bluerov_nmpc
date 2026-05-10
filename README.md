@@ -4,9 +4,9 @@
 ## Environment:
 Uses Orca4 (https://github.com/clydemcqueen/orca4?tab=readme-ov-file) Dockerfile.
 - Clone repository
-- cd orca4/docker
 - Build the Docker image:
   ```
+  cd orca4/docker
   ./build.sh
   ```
 - Start container:
@@ -27,18 +27,18 @@ Uses Orca4 (https://github.com/clydemcqueen/orca4?tab=readme-ov-file) Dockerfile
   source install/local_setup.bash
   ```
 ## Run Simulation
-- Add pipe.world to ~/colcon/src/orca4/orca_description/worlds
-- Add sim_pipe_launch.py to ~/colcon/src/orca4/orca_bringup/launch
+- Add `pipe.world` to `~/colcon/src/orca4/orca_description/worlds`
+- Add `sim_pipe_launch.py` to `~/colcon/src/orca4/orca_bringup/launch`
 - In the terminal run:
   ```
   ros2 launch orca_bringup sim_pipe_launch.py nav:=false rviz:=false slam:=false
   ```
 ## Run Controller
-- Make ROS package in ~/colcon/src/orca4
+- Make ROS package in `~/colcon/src/orca4`
   ```
   ros2 pkg create --build-type ament_python orca_control --dependencies rclpy std_msgs
   ```
-- Add mpc_controller.py to ~/colcon/src/orca4/orca_control/orca_control
+- Add `pc_controller.py` to `~/colcon/src/orca4/orca_control/orca_control`
 - Rebuild
   ```
   cd ~/colcon/src
