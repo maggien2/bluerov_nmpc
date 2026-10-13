@@ -55,4 +55,9 @@ Uses Orca4 (https://github.com/clydemcqueen/orca4?tab=readme-ov-file) Dockerfile
 ## Example video
 https://github.com/user-attachments/assets/57305547-79df-403f-b263-314aa6975227
 
+<img width="1141" height="403" alt="traj_plt" src="https://github.com/user-attachments/assets/9848a417-5fab-4dd3-a8f1-5d6b2286dfea" />
+<img width="500" height="357" alt="err_plt" src="https://github.com/user-attachments/assets/7fdc8fb5-eff6-4589-afb3-df7b10b38888" />
+<img width="500" height="357" alt="control_input" src="https://github.com/user-attachments/assets/a794dce4-87a3-4c16-8150-06611fad1598" />
+
+
 
