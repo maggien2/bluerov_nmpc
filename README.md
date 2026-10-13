@@ -55,3 +55,8 @@ Uses Orca4 (https://github.com/clydemcqueen/orca4?tab=readme-ov-file) Dockerfile
   ros2 topic pub /mpc/eta_ref std_msgs/msg/Float64MultiArray \
   "{data: [4.0, 4.0, -4.0, 0.0, 0.0, 0.0]}"
   ```
+
+## Example video
+https://github.com/user-attachments/assets/57305547-79df-403f-b263-314aa6975227
+
+
