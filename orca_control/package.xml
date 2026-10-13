@@ -4,7 +4,7 @@
   <name>orca_control</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="smath24@illinois.edu">auvsl</maintainer>
+  <maintainer email="maggien2@illinois.edu">auvsl</maintainer>
   <license>TODO: License declaration</license>
 
   <depend>rclpy</depend>
