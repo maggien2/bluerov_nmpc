@@ -34,11 +34,7 @@ Uses Orca4 (https://github.com/clydemcqueen/orca4?tab=readme-ov-file) Dockerfile
   ros2 launch orca_bringup sim_pipe_launch.py nav:=false rviz:=false slam:=false
   ```
 ## Run Controller
-- Make ROS package in `~/colcon/src/orca4`
-  ```
-  ros2 pkg create --build-type ament_python orca_control --dependencies rclpy std_msgs
-  ```
-- Add `mpc_controller.py` to `~/colcon/src/orca4/orca_control/orca_control`
+- Add `orca_control` package to `~/colcon/src/orca4`
 - Rebuild
   ```
   cd ~/colcon/src
@@ -47,7 +43,7 @@ Uses Orca4 (https://github.com/clydemcqueen/orca4?tab=readme-ov-file) Dockerfile
   ```
 - Run
   ```
-  ros2 run orca_control mpc_controller.py
+  ros2 run orca_control nmpc_controller
   ```
   
 ## Publish waypoint example
