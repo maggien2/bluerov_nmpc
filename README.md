@@ -8,6 +8,14 @@ Uses Orca4 (https://github.com/clydemcqueen/orca4?tab=readme-ov-file) Dockerfile
   ```
   cd orca4/docker
   ./build.sh
+  docker run -it \
+    --name orca4_sim \
+    --net=host \
+    --privileged \
+    --env="DISPLAY" \
+    --env="QT_X11_NO_MITSHM=1" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    orca4:latest
   ```
 - Start container:
   ```
