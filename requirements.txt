@@ -1,0 +1,7 @@
+numpy==1.24.4            # must stay <1.25 so apt SciPy 1.8 and ROS binaries load
+casadi==3.8.2
+do_mpc==5.1.2
+transforms3d>=0.4.2      # apt's 0.3.1 breaks on numpy>=1.24 (np.float)
+matplotlib==3.10.9
+pandas==2.3.3
+opencv-python<4.11       # 5.x requires numpy>=2
